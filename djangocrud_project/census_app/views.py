@@ -5,10 +5,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import random
 import string
-
+from .models import Respondent
 
 # Function to generate a random name
 def get_random_name():
+
     return (''.join([random.choice(string.ascii_letters + string.digits) for n in range(32)]))
 
 
@@ -25,3 +26,7 @@ def get_random_salary():
 def index(request):
     return HttpResponse("<h1>Welcome to the Census Application!</h1><h4>" + get_random_name() + "</h4><h4>" + str(
         get_random_age()) + "</h4><h4>" + str(get_random_salary()))
+
+
+def getAll():
+    print(Respondent.objects.getAll())
